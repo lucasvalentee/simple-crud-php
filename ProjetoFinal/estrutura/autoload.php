@@ -32,9 +32,3 @@ function load3($sNomeClasse) {
         require_once $sCaminho;
     }
 }
-
-spl_autoload_register('load4');
-function load4($sNomeClasse) {
-    $sExt = '.php';
-    $aNome = preg_split('A-Z', $sNomeClasse);
-}

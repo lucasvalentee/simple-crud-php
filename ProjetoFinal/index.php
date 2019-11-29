@@ -1,7 +1,10 @@
 <?php
+session_start();
 
-if(isset($_SESSION['login']) && isset($_SESSION['senha'])) {
-    include 'index.php';
+require_once 'estrutura/autoload.php';
+
+if(isset($_SESSION['login'])) {
+    include 'inicio.php';
 }
 else {
     include 'login.php';

@@ -1,6 +1,12 @@
 <?php
-require_once 'estrutura/autoload.php';
+
 $oCampo = new Campos();
+if(isset($_POST['acesso']) && isset($_POST['login']) && isset($_POST['senha'])) {
+    if($_POST['login'] == 'admin' && $_POST['senha'] == 'admin') {
+        $_SESSION['login'] = 'admin';
+    }
+}
+
 ?>
 <html>
     <head>
@@ -13,7 +19,7 @@ $oCampo = new Campos();
         <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form id='formulario_login' class="form-group">
+        <form id='formulario_login' class="form-group" method="post">
             <div id='div_login'>
                 <table id="tabela_login">
                     <tr>
@@ -28,7 +34,7 @@ $oCampo = new Campos();
                         <td colspan="2">
                             <div id="botoes">
                                 <input type="reset"  value="Cancelar" class="btn btn-default">
-                                <input type="submit" value="Login"    class="btn btn-success">
+                                <input type="submit" value="Login"    class="btn btn-success" name="acesso">
                             </div>
                         </td>
                     </tr>
