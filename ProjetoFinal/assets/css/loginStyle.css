@@ -11,6 +11,7 @@ and open the template in the editor.
 body {
     padding: 0px;
     margin: 0px;
+    background-color: #121212 !important;
 }
 
 #formulario_login {
@@ -23,6 +24,8 @@ body {
     margin: auto;
     margin-top: 50px;
     border-radius: 30px;
+    border: solid #303030 3px;
+    background-color: #080808;
 }
 
 #div_login {
@@ -30,7 +33,12 @@ body {
     justify-content: space-around;
     flex-direction: column;
     margin: auto;
-    width: 75%;
+    width: 50%;
     height: 300px;
-    background-color: blue;
+    background-color: #080808;
+}
+
+label {
+    color: white;
+    float: right;
 }
