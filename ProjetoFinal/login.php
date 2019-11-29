@@ -15,10 +15,22 @@ $oCampo = new Campos();
     <body>
         <form id='formulario_login' class="form-group">
             <div id='div_login'>
-                <table>
+                <table id="tabela_login">
                     <tr>
-                        <td class="label"><?= $oCampo->getLabel('Login', 'login') ?></td>
-                        <td><?= $oCampo->getCampoNome('login', Base::CAMPO_TEXTO, 'login', 'form-control') ?></td>
+                        <td width="10%"><?= $oCampo->getLabelCampo('Login', 'login') ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('login', Base::CAMPO_TEXTO, 'login', 'form-control') ?></td>
+                    </tr>
+                    <tr>
+                        <td width="10%"><?= $oCampo->getLabelCampo('Senha', 'senha') ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('senha', Base::CAMPO_SENHA, 'senha', 'form-control') ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="botoes">
+                                <input type="reset"  value="Cancelar" class="btn btn-default">
+                                <input type="submit" value="Login"    class="btn btn-success">
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>
