@@ -1,4 +1,5 @@
 <?php
+require_once 'autoload.php'
 /**
  * Classe com os campos padrão do projeto
  * @package EST
@@ -7,8 +8,8 @@
  */
 class Campos extends BaseCampos {
     
-    public function getCampoNome() {
-        return 0;
+    public function getCampoNome($sNome = 'nome', $sTipo = BaseCampos::CAMPO_TEXTO, $sId = 'nome') {
+        return ;
     }
     
 }
