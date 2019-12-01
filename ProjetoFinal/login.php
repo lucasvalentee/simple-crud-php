@@ -1,12 +1,5 @@
 <?php
-
 $oCampo = new Campos();
-if(isset($_POST['acesso']) && isset($_POST['login']) && isset($_POST['senha'])) {
-    if($_POST['login'] == 'admin' && $_POST['senha'] == 'admin') {
-        $_SESSION['login'] = 'admin';
-    }
-}
-
 ?>
 <html>
     <head>
@@ -19,7 +12,7 @@ if(isset($_POST['acesso']) && isset($_POST['login']) && isset($_POST['senha'])) 
         <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <form id='formulario_login' class="form-group" method="post">
+        <form id='formulario_login' class="form-group" method="post" action="index.php">
             <div id='div_login'>
                 <table id="tabela_login">
                     <tr>
