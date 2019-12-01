@@ -22,7 +22,6 @@ if(isset($_POST['gravar'])) {
                             ,'pais'          => $_POST['pais']
                             ,'telefone'      => $_POST['telefone']
                             ,'fax'           => $_POST['fax']));
-        //$stmt->execute(); 
     } catch(PDOException $e) {
         echo 'ERROR: ' . $e->getMessage();
     }
@@ -94,7 +93,7 @@ if(isset($_POST['gravar'])) {
                         <td colspan="2">
                             <div id="botoes">
                                 <input type="reset"  value="Cancelar" class="btn btn-default">
-                                <input type="submit" value="Gravar"   class="btn btn-success" name="acesso">
+                                <input type="submit" value="Gravar"   class="btn btn-success" name="gravar">
                             </div>
                         </td>
                     </tr>
