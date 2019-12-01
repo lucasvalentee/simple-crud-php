@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once 'estrutura/autoload.php';
+require 'estrutura/autoload.php';
 
 if(isset($_POST['acesso']) && isset($_POST['login']) && isset($_POST['senha'])) {
     if($_POST['login'] == 'admin' && $_POST['senha'] == 'admin') {
@@ -10,7 +10,7 @@ if(isset($_POST['acesso']) && isset($_POST['login']) && isset($_POST['senha'])) 
 }
 
 if(isset($_SESSION['login'])) {
-    include 'cadastrar.php';
+    include 'cliente/cadastrar.php';
 }
 else {
     include 'login.php';

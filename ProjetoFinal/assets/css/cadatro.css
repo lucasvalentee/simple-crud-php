@@ -1,0 +1,60 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: gray !important;
+}
+
+#formulario_cadastro {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 70%;
+    height: 500px;
+    background-color:black;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 30px;
+    border: solid #303030 3px;
+    background-color: #080808;
+}
+
+#div_principal_cad {
+    width:50%;
+    background-color:red;
+    margin:auto;
+    height: 500px;
+}
+
+#div_cadastro {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: auto;
+    width: 75%;
+    background-color: #080808;
+}
+
+#tabela_cadastro {
+    width: 100%;
+}
+
+label {
+    color: white;
+    float: right;
+}
+
+#botoes {
+    float:right;
+}
+
+#label_selecionar, selecionar {
+    width: 50%;
+}
+
+#label_selecionar {
+    float:right;
+}
+
+#selecionar {
+    float:left;
+}
