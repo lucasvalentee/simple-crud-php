@@ -18,8 +18,8 @@ class Base {
      * @param String $sId
      * @return String
      */
-    public function getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres, $xValor) {
-        return "<input type='{$sTipo}' name='$sNome' id='{$sId}' class='{$sClasse}' maxlength='$iMaximoCaracteres' value='{$xValor}'/>";
+    public function getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres, $xValor, $sDisabled) {
+        return "<input type='{$sTipo}' name='$sNome' id='{$sId}' class='{$sClasse}' maxlength='$iMaximoCaracteres' value='{$xValor}' $sDisabled/>";
     }
     
     /**

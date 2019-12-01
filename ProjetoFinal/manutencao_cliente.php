@@ -8,6 +8,8 @@ $bVerifica['excluir']   = false;
 
 $oCampo = new Campos();
 
+$sNomeBotao     = 'gravar';
+
 $sIdCliente     = '';
 $sNomeCompanhia = '';
 $sNomeContato   = '';
@@ -40,11 +42,45 @@ if(isset($_POST['gravar'])) {
         echo 'ERROR: ' . $e->getMessage();
     }
 }
+else if(isset($_POST['gravar_alterar'])) {
+    try {
+        $stmt = $conn->prepare(
+            "UPDATE clientes 
+                SET idcliente      = '$_POST[id_cliente]'
+                    ,nomeCompanhia = '$_POST[nome_companhia]' 
+                    ,nomeContato   = '$_POST[nome_contato]'
+                    ,tituloContato = '$_POST[titulo_contato]' 
+                    ,endereco      = '$_POST[endereco]'
+                    ,cidade        = '$_POST[cidade]'
+                    ,regiao        = '$_POST[regiao]'
+                    ,cep           = '$_POST[cep]'
+                    ,pais          = '$_POST[pais]'
+                    ,telefone      = '$_POST[telefone]'
+                    ,fax           = '$_POST[fax]'
+              WHERE IDCliente = '$_POST[id_cliente]'");
+        
+        $stmt->execute(array('idcliente'     => $_POST['id_cliente']
+                            ,'nomeCompanhia' => $_POST['nome_companhia']
+                            ,'nomeContato'   => $_POST['nome_contato']
+                            ,'tituloContato' => $_POST['titulo_contato']
+                            ,'endereco'      => $_POST['endereco']
+                            ,'cidade'        => $_POST['cidade']
+                            ,'regiao'        => $_POST['regiao']
+                            ,'cep'           => $_POST['cep']
+                            ,'pais'          => $_POST['pais']
+                            ,'telefone'      => $_POST['telefone']
+                            ,'fax'           => $_POST['fax']));
+        
+    } catch(PDOException $e) {
+        echo 'ERROR: ' . $e->getMessage();
+    }
+}
+
+
 if(isset($_GET['id'])) {
     include_once 'conexao.php';
     try {
         $oQuery = $conn->prepare("SELECT * FROM clientes WHERE IDCliente = '$_GET[id]'");
-//        $oQuery->bindParam('IDCliente', $_GET['id'], PDO::PARAM_INT);
         $oQuery->execute();
 
         $oResultado = $oQuery->fetchAll();
@@ -61,6 +97,7 @@ if(isset($_GET['id'])) {
         $sPais          = $aResultado['Pais']          ?: '';
         $sTelefone      = $aResultado['Telefone']      ?: '';
         $sFax           = $aResultado['Fax']           ?: '';
+        $sNomeBotao     = 'gravar_alterar';
       }  
     } catch(PDOException $e) {
         echo 'ERROR: ' . $e->getMessage();
@@ -86,7 +123,18 @@ if(isset($_GET['id'])) {
                 <table id="tabela_cadastro">
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('ID do Cliente', 'id_cliente') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('id_cliente', Base::CAMPO_TEXTO, 'id_cliente', 'form-control', 5, $sIdCliente) ?></td>
+                        <?php
+                        if(isset($_GET['id'])) {
+                        ?>
+                            <td width="50%"><?= $oCampo->getCampoNome('id_cliente', Base::CAMPO_TEXTO, 'id_cliente', 'form-control', 5, $sIdCliente, 'readonly') ?></td>
+                        <?php
+                        }
+                        else {
+                        ?>
+                            <td width="50%"><?= $oCampo->getCampoNome('id_cliente', Base::CAMPO_TEXTO, 'id_cliente', 'form-control', 5, $sIdCliente) ?></td>
+                        <?php
+                        }
+                        ?>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Nome da Companhia', 'nome_companhia') ?></td>
@@ -132,7 +180,7 @@ if(isset($_GET['id'])) {
                         <td colspan="2">
                             <div id="botoes">
                                 <input type="reset"  value="Cancelar" class="btn btn-default">
-                                <input type="submit" value="Gravar"   class="btn btn-success" name="gravar">
+                                <input type="submit" value="Gravar"   class="btn btn-success" name="<?= $sNomeBotao ?>">
                             </div>
                         </td>
                     </tr>
