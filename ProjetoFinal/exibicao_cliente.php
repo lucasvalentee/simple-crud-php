@@ -1,8 +1,7 @@
 <?php
-    include_once '../conexao.php';
+    include_once 'conexao.php';
     try {
         $oQuery = $conn->prepare('SELECT * FROM clientes');
-//      $oQuery->bindParam(':id', $id, PDO::PARAM_INT);
         $oQuery->execute();
 
         $aResultado = $oQuery->fetchAll();
@@ -39,8 +38,8 @@
                     <td><?=$oResultado['Telefone']?></td>
                     <td><?=$oResultado['Fax']?></td>
                     <td>
-                        <a href="?modulo=cidades&pagina=alterar&id=<?=$oResultado['id']?>">Alterar</a>
-                        <a href="?modulo=cidades&pagina=deletar&id=<?=$oResultado['id']?>">Excluír</a>
+                        <a href="manutencao_cliente.php?id=<?=$oResultado['IDCliente']?>">Alterar</a>
+                        <a href="cadastro.php&deletar=true&id=<?=$oResultado['IDCliente']?>">Excluír</a>
                     </td>
                 </tr>
                 <?php

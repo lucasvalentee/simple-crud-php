@@ -8,7 +8,7 @@ if(isset($_POST['acesso']) && isset($_POST['login']) && isset($_POST['senha'])) 
 }
 
 if(isset($_SESSION['login'])) {
-    include 'cliente/cadastrar.php';
+    include 'inicio.php';
 }
 else {
     include 'login.php';

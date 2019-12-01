@@ -23,10 +23,13 @@ class Campos extends Base {
      * @param String $sNome
      * @param String $sTipo
      * @param String $sId
+     * @param String $sClasse
+     * @param Integer $iMaximoCaracteres
+     * @param String $sValor
      * @return Campo
      */
-    public function getCampoNome($sNome = 'nome', $sTipo = BaseCampos::CAMPO_TEXTO, $sId = 'nome', $sClasse = '', $iMaximoCaracteres = '') {
-        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres);
+    public function getCampoNome($sNome = 'nome', $sTipo = BaseCampos::CAMPO_TEXTO, $sId = 'nome', $sClasse = '', $iMaximoCaracteres = '', $sValor = '') {
+        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres, $sValor);
     }
     
     
@@ -35,10 +38,13 @@ class Campos extends Base {
      * @param String $sNome
      * @param String $sTipo
      * @param String $sId
+     * @param String $sClasse
+     * @param Integer $iMaximoCaracteres
+     * @param String $sValor
      * @return Campo
      */
-    public function getCampoSenha($sNome = 'senha', $sTipo = BaseCampos::CAMPO_SENHA, $sId = 'senha', $sClasse = '', $iMaximoCaracteres = '') {
-        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres);
+    public function getCampoSenha($sNome = 'senha', $sTipo = BaseCampos::CAMPO_SENHA, $sId = 'senha', $sClasse = '', $iMaximoCaracteres = '', $sValor = '') {
+        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres, $sValor);
     }
     
     /**
@@ -46,9 +52,12 @@ class Campos extends Base {
      * @param String $sNome
      * @param String $sTipo
      * @param String $sId
+     * @param String $sClasse
+     * @param Integer $iMaximoCaracteres
+     * @param Integer $iValor
      * @return Campo
      */
-    public function getCampoNumerico($sNome = 'numero', $sTipo = BaseCampos::CAMPO_NUMERICO, $sId = 'numero', $sClasse = '', $iMaximoCaracteres = '') {
-        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres);
+    public function getCampoNumerico($sNome = 'numero', $sTipo = BaseCampos::CAMPO_NUMERICO, $sId = 'numero', $sClasse = '', $iMaximoCaracteres = '', $iValor = '') {
+        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres, $iValor);
     }
 }

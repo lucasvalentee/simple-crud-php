@@ -1,10 +1,24 @@
 <?php
-require_once 'estrutura/autoload.php';
+require 'estrutura/autoload.php';
 include_once 'conexao.php';
+
 $bVerifica['cadastrar'] = true;
 $bVerifica['alterar']   = false;
 $bVerifica['excluir']   = false;
+
 $oCampo = new Campos();
+
+$sIdCliente     = '';
+$sNomeCompanhia = '';
+$sNomeContato   = '';
+$sTituloContato = '';
+$sEndereco      = '';
+$sCidade        = '';
+$sRegiao        = '';
+$sCep           = '';
+$sPais          = '';
+$sTelefone      = '';
+$sFax           = '';
 
 if(isset($_POST['gravar'])) {
     try {
@@ -26,6 +40,32 @@ if(isset($_POST['gravar'])) {
         echo 'ERROR: ' . $e->getMessage();
     }
 }
+if(isset($_GET['id'])) {
+    include_once 'conexao.php';
+    try {
+        $oQuery = $conn->prepare("SELECT * FROM clientes WHERE IDCliente = '$_GET[id]'");
+//        $oQuery->bindParam('IDCliente', $_GET['id'], PDO::PARAM_INT);
+        $oQuery->execute();
+
+        $oResultado = $oQuery->fetchAll();
+        
+        foreach($oResultado as $aResultado) {
+        $sIdCliente     = $aResultado['IDCliente']     ?: '';
+        $sNomeCompanhia = $aResultado['NomeCompanhia'] ?: '';
+        $sNomeContato   = $aResultado['NomeContato']   ?: '';
+        $sTituloContato = $aResultado['TituloContato'] ?: '';
+        $sEndereco      = $aResultado['Endereco']      ?: '';
+        $sCidade        = $aResultado['Cidade']        ?: '';
+        $sRegiao        = $aResultado['Regiao']        ?: '';
+        $sCep           = $aResultado['CEP']           ?: '';
+        $sPais          = $aResultado['Pais']          ?: '';
+        $sTelefone      = $aResultado['Telefone']      ?: '';
+        $sFax           = $aResultado['Fax']           ?: '';
+      }  
+    } catch(PDOException $e) {
+        echo 'ERROR: ' . $e->getMessage();
+    }
+}
 ?>
 <html>
     <head>
@@ -36,7 +76,6 @@ if(isset($_POST['gravar'])) {
         <link href="assets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/cadatro.css" rel="stylesheet" type="text/css"/>
-
     </head>
     <body>
         <?php 
@@ -47,47 +86,47 @@ if(isset($_POST['gravar'])) {
                 <table id="tabela_cadastro">
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('ID do Cliente', 'id_cliente') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('id_cliente', Base::CAMPO_TEXTO, 'id_cliente', 'form-control', 5) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('id_cliente', Base::CAMPO_TEXTO, 'id_cliente', 'form-control', 5, $sIdCliente) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Nome da Companhia', 'nome_companhia') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('nome_companhia', Base::CAMPO_TEXTO, 'nome_companhia', 'form-control', 40) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('nome_companhia', Base::CAMPO_TEXTO, 'nome_companhia', 'form-control', 40, $sNomeCompanhia) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Nome do Contato', 'nome_contato') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('nome_contato', Base::CAMPO_TEXTO, 'nome_contato', 'form-control', 30) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('nome_contato', Base::CAMPO_TEXTO, 'nome_contato', 'form-control', 30, $sNomeContato) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Título do Contato', 'titulo_contato') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('titulo_contato', Base::CAMPO_TEXTO, 'titulo_contato', 'form-control', 30) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('titulo_contato', Base::CAMPO_TEXTO, 'titulo_contato', 'form-control', 30, $sTituloContato) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Endereço', 'endereco') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('endereco', Base::CAMPO_TEXTO, 'endereco', 'form-control', 60) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('endereco', Base::CAMPO_TEXTO, 'endereco', 'form-control', 60, $sEndereco) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Cidade', 'cidade') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('cidade', Base::CAMPO_TEXTO, 'cidade', 'form-control', 15) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('cidade', Base::CAMPO_TEXTO, 'cidade', 'form-control', 15, $sCidade) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Região', 'regiao') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('regiao', Base::CAMPO_TEXTO, 'regiao', 'form-control', 15) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('regiao', Base::CAMPO_TEXTO, 'regiao', 'form-control', 15, $sRegiao) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('CEP', 'cep') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('cep', Base::CAMPO_TEXTO, 'cep', 'form-control', 10) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('cep', Base::CAMPO_TEXTO, 'cep', 'form-control', 10, $sCep) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('País', 'pais') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('pais', Base::CAMPO_TEXTO, 'pais', 'form-control', 15) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('pais', Base::CAMPO_TEXTO, 'pais', 'form-control', 15, $sPais) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('Telefone', 'telefone') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('telefone', Base::CAMPO_NUMERICO, 'telefone', 'form-control', 24) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('telefone', Base::CAMPO_NUMERICO, 'telefone', 'form-control', 24, $sTelefone) ?></td>
                     </tr>
                     <tr>
                         <td width="15%"><?= $oCampo->getLabelCampo('FAX', 'fax') ?></td>
-                        <td width="50%"><?= $oCampo->getCampoNome('fax', Base::CAMPO_TEXTO, 'fax', 'form-control', 24) ?></td>
+                        <td width="50%"><?= $oCampo->getCampoNome('fax', Base::CAMPO_TEXTO, 'fax', 'form-control', 24, $sFax) ?></td>
                     </tr>
                     <tr>
                         <td colspan="2">

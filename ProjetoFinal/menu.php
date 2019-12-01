@@ -27,8 +27,9 @@ header('Content-Type: text/html; charset=utf-8');
 </style>
 <nav>
     <ul class="nav nav-pills">
-        <li class="<?= $bVerifica['cadastrar'] ? 'active' : '' ?>"><a class="active" href="cliente/cadastrar.php">Cadastrar Cliente</a></li>
-        <li class="<?= $bVerifica['alterar']   ? 'active' : '' ?>"><a class="active" href="cliente/exibicao.php">Visualizar Cliente</a></li>
+        <li class="<?= $bVerifica['cadastrar'] ? 'active' : '' ?>"><a class="active" href="inicio.php">Início</a></li>
+        <li class="<?= $bVerifica['cadastrar'] ? 'active' : '' ?>"><a class="active" href="manutencao_cliente.php">Cadastrar Cliente</a></li>
+        <li class="<?= $bVerifica['alterar']   ? 'active' : '' ?>"><a class="active" href="exibicao_cliente.php">Visualizar Cliente</a></li>
         <li class="<?= $bVerifica['excluir']   ? 'active' : '' ?>"><a class="active" href="excluir.php">Excluir</a></li>
     </ul>
 </nav>
