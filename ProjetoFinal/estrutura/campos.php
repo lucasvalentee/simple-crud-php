@@ -25,8 +25,8 @@ class Campos extends Base {
      * @param String $sId
      * @return Campo
      */
-    public function getCampoNome($sNome = 'nome', $sTipo = BaseCampos::CAMPO_TEXTO, $sId = 'nome', $sClasse = '') {
-        return $this->getCampo($sNome, $sTipo, $sId, $sClasse);
+    public function getCampoNome($sNome = 'nome', $sTipo = BaseCampos::CAMPO_TEXTO, $sId = 'nome', $sClasse = '', $iMaximoCaracteres = '') {
+        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres);
     }
     
     
@@ -37,8 +37,8 @@ class Campos extends Base {
      * @param String $sId
      * @return Campo
      */
-    public function getCampoSenha($sNome = 'senha', $sTipo = BaseCampos::CAMPO_SENHA, $sId = 'senha', $sClasse = '') {
-        return $this->getCampo($sNome, $sTipo, $sId, $sClasse);
+    public function getCampoSenha($sNome = 'senha', $sTipo = BaseCampos::CAMPO_SENHA, $sId = 'senha', $sClasse = '', $iMaximoCaracteres = '') {
+        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres);
     }
     
     /**
@@ -48,7 +48,7 @@ class Campos extends Base {
      * @param String $sId
      * @return Campo
      */
-    public function getCampoNumerico($sNome = 'numero', $sTipo = BaseCampos::CAMPO_NUMERICO, $sId = 'numero', $sClasse = '') {
-        return $this->getCampo($sNome, $sTipo, $sId, $sClasse);
+    public function getCampoNumerico($sNome = 'numero', $sTipo = BaseCampos::CAMPO_NUMERICO, $sId = 'numero', $sClasse = '', $iMaximoCaracteres = '') {
+        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres);
     }
 }

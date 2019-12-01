@@ -1,4 +1,5 @@
 <?php
+require 'estrutura/autoload.php';
 $oCampo = new Campos();
 ?>
 <html>
