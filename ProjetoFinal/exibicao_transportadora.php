@@ -12,8 +12,7 @@
         }
     }
     
-    try {
-        
+    try {        
         $oQuery = $conn->prepare('SELECT * FROM transportadoras');
         $oQuery->execute();
 
