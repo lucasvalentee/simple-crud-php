@@ -60,4 +60,18 @@ class Campos extends Base {
     public function getCampoNumerico($sNome = 'numero', $sTipo = BaseCampos::CAMPO_NUMERICO, $sId = 'numero', $sClasse = '', $iMaximoCaracteres = '', $iValor = '', $sDisabled = '') {
         return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres, $iValor, $sDisabled);
     }
+    
+    /**
+     * Retorna o campo data
+     * @param String $sNome
+     * @param String $sTipo
+     * @param String $sId
+     * @param String $sClasse
+     * @param Integer $iMaximoCaracteres
+     * @param Integer $iValor
+     * @return Campo
+     */
+    public function getCampoData($sNome = 'data', $sTipo = BaseCampos::CAMPO_DATA, $sId = 'data', $sClasse = '', $iMaximoCaracteres = '', $iValor = '', $sDisabled = '') {
+        return $this->getCampo($sNome, $sTipo, $sId, $sClasse, $iMaximoCaracteres, $iValor, $sDisabled);
+    }
 }

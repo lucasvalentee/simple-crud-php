@@ -9,7 +9,8 @@ class Base {
     
     const CAMPO_NUMERICO = 'numeric',
           CAMPO_TEXTO    = 'text',
-          CAMPO_SENHA    = 'password';
+          CAMPO_SENHA    = 'password',
+          CAMPO_DATA     = 'date';
     
     /**
      * Cria o html do campo
