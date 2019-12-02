@@ -126,12 +126,12 @@ if(isset($_GET['id'])) {
                         <?php
                         if(isset($_GET['id'])) {
                         ?>
-                            <td width="50%"><?= $oCampo->getCampoNome('id_ordem', Base::CAMPO_TEXTO, 'id_ordem', 'form-control', 5, $sIdOrdem, 'readonly') ?></td>
+                            <td width="50%"><?= $oCampo->getCampoNome('id_ordem', Base::CAMPO_NUMERICO, 'id_ordem', 'form-control', 5, $sIdOrdem, 'readonly') ?></td>
                         <?php
                         }
                         else {
                         ?>
-                            <td width="50%"><?= $oCampo->getCampoNome('id_ordem', Base::CAMPO_TEXTO, 'id_ordem', 'form-control', 5, $sIdOrdem) ?></td>
+                            <td width="50%"><?= $oCampo->getCampoNome('id_ordem', Base::CAMPO_NUMERICO, 'id_ordem', 'form-control', 5, $sIdOrdem) ?></td>
                         <?php
                         }
                         ?>

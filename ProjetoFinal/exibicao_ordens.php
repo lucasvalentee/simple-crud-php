@@ -63,7 +63,7 @@
             foreach($aResultado as $oResultado) {
                 ?>
                 <tr>
-                    <td><?=$oResultado['IDCliente']?></td>
+                    <td><?=$oResultado['IDOrdem']?></td>
                     <td><?=$oResultado['nome_funcionario'].' '.$oResultado['sobrenome_funcionario']?></td>
                     <td><?=$oResultado['nome_transportadora']?></td>
                     <td><?=$oResultado['DataOrdem']?></td>
