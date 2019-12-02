@@ -59,17 +59,7 @@ else if(isset($_POST['gravar_alterar'])) {
                     ,fax           = '$_POST[fax]'
               WHERE IDCliente = '$_POST[id_cliente]'");
         
-        $stmt->execute(array('idcliente'     => $_POST['id_cliente']
-                            ,'nomeCompanhia' => $_POST['nome_companhia']
-                            ,'nomeContato'   => $_POST['nome_contato']
-                            ,'tituloContato' => $_POST['titulo_contato']
-                            ,'endereco'      => $_POST['endereco']
-                            ,'cidade'        => $_POST['cidade']
-                            ,'regiao'        => $_POST['regiao']
-                            ,'cep'           => $_POST['cep']
-                            ,'pais'          => $_POST['pais']
-                            ,'telefone'      => $_POST['telefone']
-                            ,'fax'           => $_POST['fax']));
+        $stmt->execute();
         
     } catch(PDOException $e) {
         echo 'ERROR: ' . $e->getMessage();
