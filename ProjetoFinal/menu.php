@@ -8,7 +8,7 @@ header('Content-Type: text/html; charset=utf-8');
     }
     
     ul {
-        width: 50%;
+        width: 100%;
         background-color: #121212;
         margin: auto;
         height: 50px;
@@ -28,9 +28,10 @@ header('Content-Type: text/html; charset=utf-8');
 <nav>
     <ul class="nav nav-pills">
         <li class="<?= $bVerifica['cadastrar'] ? 'active' : '' ?>"><a class="active" href="inicio.php">Início</a></li>
-        <li class="<?= $bVerifica['cadastrar'] ? 'active' : '' ?>"><a class="active" href="manutencao_cliente.php">Cadastrar Cliente</a></li>
-        <li class="<?= $bVerifica['alterar']   ? 'active' : '' ?>"><a class="active" href="exibicao_cliente.php">Visualizar Cliente</a></li>
-        <li class="<?= $bVerifica['excluir']   ? 'active' : '' ?>"><a class="active" href="manutencao_transportadora.php">Cadastrar Transportadora</a></li>
+        <li class="<?= $bVerifica['cadastrar'] ? 'active' : '' ?>"><a class="active" href="manutencao_cliente.php">Cadastrar Clientes</a></li>
+        <li class="<?= $bVerifica['alterar']   ? 'active' : '' ?>"><a class="active" href="exibicao_cliente.php">Visualizar Clientes</a></li>
+        <li class="<?= $bVerifica['excluir']   ? 'active' : '' ?>"><a class="active" href="manutencao_transportadora.php">Cadastrar Transportadoras</a></li>
+        <li class="<?= $bVerifica['excluir']   ? 'active' : '' ?>"><a class="active" href="exibicao_transportadora.php">Visualizar Transportadoras</a></li>
     </ul>
 </nav>
 
