@@ -13,9 +13,10 @@ $sTelefone         = '';
 if(isset($_POST['gravar'])) {
     try {
         $stmt = $conn->prepare(
-            'INSERT INTO transportadora (idtransportadora, nomeCompanhia, telefone');
+            'INSERT INTO transportadoras (IDTransportadora, NomeConpanhia, Telefone)
+                  VALUES(:idtransportadora, :nomeConpanhia, :telefone)');
         $stmt->execute(array('idtransportadora' => $_POST['id_transportadora']
-                            ,'nomeCompanhia'    => $_POST['nome_companhia']
+                            ,'nomeConpanhia'    => $_POST['nome_companhia']
                             ,'telefone'         => $_POST['telefone']));
     } catch(PDOException $e) {
         echo 'ERROR: ' . $e->getMessage();
@@ -24,14 +25,12 @@ if(isset($_POST['gravar'])) {
 else if(isset($_POST['gravar_alterar'])) {
     try {
         $stmt = $conn->prepare(
-            "UPDATE transportadora 
+            "UPDATE transportadoras 
                 SET idtransportadora = '$_POST[id_transportadora]'
-                   ,nomeCompanhia    = '$_POST[nome_companhia]' 
+                   ,nomeConpanhia    = '$_POST[nome_companhia]' 
                    ,Telefone         = '$_POST[telefone]'");
         
-        $stmt->execute(array('idtransportadora' => $_POST['id_transportadora']
-                            ,'nomeCompanhia'    => $_POST['nome_companhia']
-                            ,'telefone'         => $_POST['telefone']));
+        $stmt->execute();
         
     } catch(PDOException $e) {
         echo 'ERROR: ' . $e->getMessage();
@@ -42,7 +41,7 @@ else if(isset($_POST['gravar_alterar'])) {
 if(isset($_GET['id'])) {
     include_once 'conexao.php';
     try {
-        $oQuery = $conn->prepare("SELECT * FROM transportadora WHERE IDTransportadora = '{$_GET['id']}'");
+        $oQuery = $conn->prepare("SELECT * FROM transportadoras WHERE IDTransportadora = '{$_GET['id']}'");
         $oQuery->execute();
 
         $oResultado = $oQuery->fetchAll();
