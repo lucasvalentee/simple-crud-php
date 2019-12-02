@@ -50,20 +50,20 @@ else if(isset($_POST['gravar_alterar'])) {
     try {
         $stmt = $conn->prepare(
             "UPDATE ordens 
-                SET idordem              = $_POST[id_ordem]
-                   ,idcliente            = $_POST[id_cliente]
-                   ,idfuncionario        = $_POST[id_funcionario]
-                   ,dataordem            = $_POST[data_ordem]
-                   ,datarequisicao       = $_POST[data_requisicao]
-                   ,dataentrega          = $_POST[data_entrega]
-                   ,enviadopor           = $_POST[enviado_por]
-                   ,frete                = $_POST[frete]
-                   ,nomedestinatario     = $_POST[nome_destinatario]
-                   ,enderecodestinatario = $_POST[endereco_destinatario]
-                   ,cidadedestinatario   = $_POST[cidade_destinatario]
-                   ,regiaodestinatario   = $_POST[regiao_destinatario]
-                   ,cepdestinatario      = $_POST[cep_destinatario]
-                   ,paisdestinatario     = $_POST[pais_destinatario]
+                SET idordem              = '$_POST[id_ordem]'
+                   ,idcliente            = '$_POST[id_cliente]'
+                   ,idfuncionario        = '$_POST[id_funcionario]'
+                   ,dataordem            = '$_POST[data_ordem]'
+                   ,datarequisicao       = '$_POST[data_requisicao]'
+                   ,dataentrega          = '$_POST[data_entrega]'
+                   ,enviadopor           = '$_POST[enviado_por]'
+                   ,frete                = '$_POST[frete]'
+                   ,nomedestinatario     = '$_POST[nome_destinatario]'
+                   ,enderecodestinatario = '$_POST[endereco_destinatario]'
+                   ,cidadedestinatario   = '$_POST[cidade_destinatario]'
+                   ,regiaodestinatario   = '$_POST[regiao_destinatario]'
+                   ,cepdestinatario      = '$_POST[cep_destinatario]'
+                   ,paisdestinatario     = '$_POST[pais_destinatario]'
               WHERE IDOrdem = '$_POST[id_ordem]'");
         
         $stmt->execute();
@@ -85,9 +85,9 @@ if(isset($_GET['id'])) {
             $sIdOrdem              = $aResultado['IDOrdem'];
             $sIdCliente            = $aResultado['IDCliente'];
             $sIdFuncionario        = $aResultado['IDFuncionario'];
-            $sDataOrdem            = $aResultado['DataOrdem'];
-            $sDataRequisicao       = $aResultado['DataRequisicao'];
-            $sDataEntrega          = $aResultado['DataEntrega'];
+            $sDataOrdem            = (isset($aResultado['DataOrdem']))      ? substr($aResultado['DataOrdem'],      0, 10) : '';
+            $sDataRequisicao       = (isset($aResultado['DataRequisicao'])) ? substr($aResultado['DataRequisicao'], 0, 10) : '';
+            $sDataEntrega          = (isset($aResultado['DataEntrega']))    ? substr($aResultado['DataEntrega'],    0, 10) : '';
             $sEnviadoPor           = $aResultado['EnviadoPor'];
             $fFrete                = $aResultado['Frete'];
             $sNomeDestinatario     = $aResultado['NomeDestinatario'];
@@ -147,7 +147,7 @@ if(isset($_GET['id'])) {
                         $oClientes = $oQueryCliente->fetchAll();
                         foreach($oClientes as $aClientes) {
                             ?>
-                                <option value='<?= $aClientes['IDCliente'] ?>'><?= $aClientes['NomeCompanhia'] ?></option>
+                                <option <?= ($sIdCliente == $aClientes['IDCliente']) ? 'selected' : '' ?> value='<?= $aClientes['IDCliente'] ?>'><?= $aClientes['NomeCompanhia'] ?></option>
                             <?php
                         }
                     ?>
@@ -165,7 +165,7 @@ if(isset($_GET['id'])) {
                         $oTransportadora = $oQueryTransportadora->fetchAll();
                         foreach($oTransportadora as $aTransportadora) {
                             ?>
-                                <option value='<?= $aTransportadora['IDTransportadora'] ?>'><?= $aTransportadora['NomeConpanhia'] ?></option>
+                                <option <?= ($sEnviadoPor == $aTransportadora['IDTransportadora']) ? 'selected' : '' ?> value='<?= $aTransportadora['IDTransportadora'] ?>'><?= $aTransportadora['NomeConpanhia'] ?></option>
                             <?php
                         }
                     ?>

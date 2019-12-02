@@ -73,8 +73,8 @@
                     <td><?=$oResultado['DataEntrega']?></td>
                     <td><?=$oResultado['NomeDestinatario']?></td>
                     <td>
-                        <a style="color:black" href="manutencao_cliente.php?id=<?=$oResultado['IDOrdem']?>">Alterar</a>
-                        <a style="color:black" href="exibicao_cliente.php?deletar=true&id=<?=$oResultado['IDOrdem']?>">Excluir</a>
+                        <a style="color:black" href="manutencao_ordens.php?id=<?=$oResultado['IDOrdem']?>">Alterar</a>
+                        <a style="color:black" href="exibicao_ordens.php?deletar=true&id=<?=$oResultado['IDOrdem']?>">Excluir</a>
                     </td>
                 </tr>
                 <?php
