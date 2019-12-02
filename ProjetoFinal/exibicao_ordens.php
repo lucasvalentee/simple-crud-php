@@ -5,7 +5,7 @@
         try {
             $sId = $_GET['id'];
             
-            $oQueryBusca = $conn->prepare("SELECT * FROM ordens WHERE IDCliente = '$sId'");
+            $oQueryBusca = $conn->prepare("SELECT * FROM ordens WHERE IDOrdem = '$sId'");
             $oQueryBusca->execute();
             $aResultado  = $oQueryBusca->fetchAll();            
             
@@ -16,8 +16,6 @@
                 $oDeleteOrdens = $conn->prepare("DELETE FROM ordens WHERE IDOrdem = {$oResultado['IDOrdem']}");
                 $oDeleteOrdens->execute();
             }
-            $oDelete = $conn->prepare("DELETE FROM clientes WHERE IDCliente = '$sId'");
-            $oDelete->execute();
         } 
         catch(PDOException $e) {
             echo 'ERROR: ' . $e->getMessage();
