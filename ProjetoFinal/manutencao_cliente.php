@@ -86,17 +86,17 @@ if(isset($_GET['id'])) {
         $oResultado = $oQuery->fetchAll();
         
         foreach($oResultado as $aResultado) {
-        $sIdCliente     = $aResultado['IDCliente']     ?: '';
-        $sNomeCompanhia = $aResultado['NomeCompanhia'] ?: '';
-        $sNomeContato   = $aResultado['NomeContato']   ?: '';
-        $sTituloContato = $aResultado['TituloContato'] ?: '';
-        $sEndereco      = $aResultado['Endereco']      ?: '';
-        $sCidade        = $aResultado['Cidade']        ?: '';
-        $sRegiao        = $aResultado['Regiao']        ?: '';
-        $sCep           = $aResultado['CEP']           ?: '';
-        $sPais          = $aResultado['Pais']          ?: '';
-        $sTelefone      = $aResultado['Telefone']      ?: '';
-        $sFax           = $aResultado['Fax']           ?: '';
+        $sIdCliente     = $aResultado['IDCliente'];
+        $sNomeCompanhia = $aResultado['NomeCompanhia'];
+        $sNomeContato   = $aResultado['NomeContato'];
+        $sTituloContato = $aResultado['TituloContato'];
+        $sEndereco      = $aResultado['Endereco'];
+        $sCidade        = $aResultado['Cidade'];
+        $sRegiao        = $aResultado['Regiao'];
+        $sCep           = $aResultado['CEP'];
+        $sPais          = $aResultado['Pais'];
+        $sTelefone      = $aResultado['Telefone'];
+        $sFax           = $aResultado['Fax'];
         $sNomeBotao     = 'gravar_alterar';
       }  
     } catch(PDOException $e) {
